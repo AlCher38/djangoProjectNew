@@ -1,19 +1,28 @@
 from django.db import models
 
-NULLABLE = {'blank': True, 'null': True}
+
+# NULLABLE = {'blank': True, 'null': True}
 
 
-class Student(models.Model):
-    first_name = models.CharField(max_length=150, verbose_name='Имя')
-    last_name = models.CharField(max_length=150, verbose_name='Фамилия')
-    avatar = models.ImageField(upload_to='students/', verbose_name='Аватар', **NULLABLE)
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
 
-    is_active = models.BooleanField(default=True, verbose_name='учится')
+
+class Product(models.Model):
+    Category,
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to="images/")
+    categories = models.ForeignKey(Category, on_delete=models.CASCADE)
+    price = models.FloatField()
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return self.name
 
     class Meta:
-        verbose_name = 'студент'
-        verbose_name_plural = 'студенты'
-        ordering = ('last_name',)
+        ordering = ["name"]
+        verbose_name = "Продукт"
+        verbose_name_plural = "Продукты"
