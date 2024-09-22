@@ -8,6 +8,10 @@ class Category(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
 
+    class Meta:
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
+
 
 class Product(models.Model):
     Category,
