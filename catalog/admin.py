@@ -7,8 +7,10 @@ from catalog.models import Category, Product
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name",)
+    list_display = ("id", "name")
+    list_filter = ("name",)
+    search_fields = ("name",)
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("name",)
