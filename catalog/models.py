@@ -1,5 +1,6 @@
 from decimal import Decimal
 from django.db import models
+from catalog.utils import upload_to
 
 
 BLANK_NULL_TRUE = {"blank": True, "null": True}
@@ -30,7 +31,7 @@ class Product(models.Model):
     name = models.CharField(max_length=50, verbose_name="Наименование товара")
     description = models.TextField(**BLANK_NULL_TRUE, verbose_name="Описание товара")
     preview = models.ImageField(
-        **BLANK_NULL_TRUE, verbose_name="Изображение товара"
+        **BLANK_NULL_TRUE, upload_to=upload_to, verbose_name="Изображение товара"
     )
     category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
     price = models.DecimalField(
@@ -50,4 +51,4 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
-        ordering = ["name", "price", "created_at", "updated_at"]
+        ordering = ["name", "-price", "created_at", "-updated_at"]
