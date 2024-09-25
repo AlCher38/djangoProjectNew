@@ -11,8 +11,14 @@ class Category(models.Model):
     A model for storing product categories.
     """
 
-    name = models.CharField(max_length=50, verbose_name="Наименование категории")
-    description = models.TextField(verbose_name="Описание категории")
+    name = models.CharField(
+        max_length=50,
+        verbose_name="Наименование категории",
+        help_text="Наименование категории",
+    )
+    description = models.TextField(
+        verbose_name="Описание категории", help_text="Описание категории"
+    )
 
     def __str__(self):
         return self.name
