@@ -3,17 +3,17 @@
 {% block content %}
 <div class="col">
     <div class="card shadow-sm">
-        <img src="{{ product.preview | preview_url }}" alt="preview">
+        <img src="{{ object.preview | preview_url }}" alt="preview">
         <div class="card-body">
-            <p class="card-text"> Модель: {{product.name}}</p>
-            <p class="card-text">Описание: {{product.description}}</p>
-            <p class="card-text">Цена: {{product.price}}</p>
+            <p class="card-text"> Модель: {{object.name}}</p>
+            <p class="card-text">Описание: {{object.description}}</p>
+            <p class="card-text">Цена: {{object.price}}</p>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <a href="#" class="btn btn-secondary">Купить сейчас</a>
                     <a href="#" class="btn btn-primary me-2">Добавить в корзину</a>
                 </div>
-                <small class="text-body-secondary">{{product.created_at}}</small>
+                <small class="text-body-secondary">{{object.created_at}}</small>
             </div>
         </div>
     </div>
