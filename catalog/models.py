@@ -35,7 +35,7 @@ class Product(models.Model):
     """
 
     name = models.CharField(max_length=50, verbose_name="Наименование товара")
-    description = models.TextField(**BLANK_NULL_TRUE, verbose_name="Описание товара")
+    description = models.TextField(**BLANK_NULL_TRUE, verbose_name="Описание товара", max_length=100)
     preview = models.ImageField(
         **BLANK_NULL_TRUE, upload_to=upload_to, verbose_name="Изображение товара"
     )
